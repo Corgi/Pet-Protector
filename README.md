@@ -1,3 +1,5 @@
+A fork of the Pet Protector script by /u/Etryn, with modifications pointed out by /u/TalkingHawk. May not work with Quick Ref.
+
 # Pet-Protector
 This userscript protects your favorite Neopets and Petpets from misclicks that could cause accidental color/species changes, conversion, and abandonment. It's not a security feature; it just helps to prevent user error! :)
 
