@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name        Pet Protector
-// @namespace   http://reddit.com/u/Etryn
-// @description Protects your Neopets by hiding them at the Lab Ray, Rainbow Fountain, etc.
+// @name        Neopets - Pet Protector
+// @namespace   http://reddit.com/u/Etryn, http://reddit.com/u/TalkingHawk, http://reddit.com/u/birdoge
+// @description Protects your Neopets by hiding them at the Lab Ray, Rainbow Fountain, etc. Updated Oct 2019
 // @include     http://www.neopets.com/quickref.phtml
 // @include     http://www.neopets.com/lab2.phtml
 // @include     http://www.neopets.com/pool/
@@ -9,11 +9,11 @@
 // @include     http://www.neopets.com/pound/abandon.phtml
 // @include     http://www.neopets.com/petpetlab.phtml
 // @grant       none
-// @version     1.2
+// @version     1.3.1
 // ==/UserScript==
 
 // Modify PETNAME with the names of the pets you want to protect (properly spelled and capitalized!)
-var pets = ["PETNAME", "PETNAME", "PETNAME"];
+var pets = ["PETNAME", "PETNAME", "PETNAME", "PETNAME"];
 
 // List of Dangerous Items that can alter pet color/species
 var dangerousItems = [
@@ -40,11 +40,11 @@ var hidePet = function () {};
 // Set hidePet based on web address
 if (window.location.pathname.match("lab2")) {
 	hidePet = function(index,petName) {
-		$('input[value="'+petName+'"]').parent().remove();
+		$('input[value="'+petName+'"]').parent().hide();
 	};
 } else if (window.location.pathname.match("pool")) {
 	hidePet = function(index,petName) {
-		$('input[value="'+petName+'"]').parent().parent().remove();
+		$('input[value="'+petName+'"]').parent().parent().hide();
 	};
 } else if (window.location.pathname.match("iteminfo")) {
 	var isDangerous = false
@@ -60,14 +60,14 @@ if (window.location.pathname.match("lab2")) {
 	}
 } else if (window.location.pathname.match("abandon")) {
 	hidePet = function(index,petName) {
-		$('input[value="'+petName+'"]').parent().parent().remove();
+		$('input[value="'+petName+'"]').parent().parent().hide();
 	};
 } else if (window.location.pathname.match("petpetlab")) {
 	hidePet = function(index,petName) {
 		$('table table td:contains("'+petName+'")').remove();
 	};
 } else if (window.location.pathname.match("quickref")) {
-	$('a[href*="convert_pet"]').parent().remove();
+	$('a[href*="convert_pet"]').parent().hide();
 }
 
 // Hide the pets!
